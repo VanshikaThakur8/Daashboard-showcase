@@ -3,6 +3,7 @@ import './App.css'
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('')
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const handleSearch = () => {
     console.log('Searching for:', searchQuery)
@@ -17,15 +18,25 @@ function App() {
             <span className="logo-text">Vanshika</span>
             <div className="logo-dot"></div>
           </div>
-          <ul className="nav-menu">
+          <button
+            className="menu-toggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </button>
+          <ul className={`nav-menu ${menuOpen ? 'open' : ''}`}>
             <li className="nav-item">
-              <a href="#home" className="nav-link">Home</a>
+              <a href="#home" className="nav-link" onClick={() => setMenuOpen(false)}>Home</a>
             </li>
             <li className="nav-item">
-              <a href="#about" className="nav-link">About</a>
+              <a href="#about" className="nav-link" onClick={() => setMenuOpen(false)}>About</a>
             </li>
             <li className="nav-item">
-              <a href="#contact" className="nav-link">Contact</a>
+              <a href="#contact" className="nav-link" onClick={() => setMenuOpen(false)}>Contact</a>
             </li>
           </ul>
           <div className="nav-auth">
@@ -107,11 +118,26 @@ function App() {
             <span className="footer-tagline">MERN Stack Developer</span>
           </div>
 
-          <ul className="footer-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+          <div className="footer-info">
+            <div className="info-grid">
+              <div className="info-item">
+                <div className="info-title">Address</div>
+                <div className="info-text">Sector 62, Noida, Uttar Pradesh, India</div>
+              </div>
+              <div className="info-item">
+                <div className="info-title">Email</div>
+                <div className="info-text"><a href="mailto:contact@vanshika.dev">contact@vanshika.dev</a></div>
+              </div>
+              <div className="info-item">
+                <div className="info-title">Phone</div>
+                <div className="info-text"><a href="tel:+919999999999">+91 99999 99999</a></div>
+              </div>
+              <div className="info-item">
+                <div className="info-title">Hours</div>
+                <div className="info-text">Mon–Fri: 10:00 – 18:00 IST</div>
+              </div>
+            </div>
+          </div>
 
           <div className="footer-social">
             <a href="#" aria-label="GitHub" title="GitHub">🐙</a>
